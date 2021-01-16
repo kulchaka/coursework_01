@@ -5,32 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Основы Vue</title>
     <link rel="stylesheet" href="theme.css" />
+    <link rel="shortcut icon" href="#" />
   </head>
   <body>
+    <div class="container" id="app" v-cloak>
+      <div class="card">
+        <h1>План по изучению Vue.js</h1>
 
-  <div class="container" id="app">
-    <div class="card">
-      <h1>План по изучению Vue.js</h1>
-
-      <div class="steps">
-        <div class="steps-content">
-          Сюда необходимо вывести текст активного шага по его индексу
-        </div>
-        <ul class="steps-list">
-          <li class="steps-item done"><span>1</span> Шаг 1</li>
-          <li class="steps-item done"><span>2</span> Шаг 2</li>
+        <div class="steps">
+          <div class="steps-content">
+            {{ mainText ? mainText : steps[0].text }}
+          </div>
+          <ul class="steps-list">
+            <li
+              class="steps-item"
+              v-for="(item, index) in steps"
+              :key="index"
+              :class="{ active: index ===  activeIndex, done:  index < activeIndex }"
+            >
+              <span @click="setActive(index)">{{ index + 1 }}</span> {{
+              item.title }}
+            </li>
+            <!-- <li class="steps-item done"><span>2</span> Шаг 2</li>
           <li class="steps-item active"><span>3</span> Шаг 3</li>
-          <li class="steps-item"><span>4</span> Шаг 4</li>
-        </ul>
-        <div>
-          <button class="btn">Назад</button>
-          <button class="btn primary">Вперед</button>
+          <li class="steps-item"><span>4</span> Шаг 4</li> -->
+          </ul>
+          <div>
+            <button
+              class="btn"
+              @click="prev"
+              :disabled="!buttonOff"
+              v-if="activeButton"
+            >
+              Назад
+            </button>
+            <button
+              class="btn primary"
+              @click="nextOfFinish"
+              v-if="activeIndex < steps.length - 1 && activeButton"
+            >
+              Вперед
+            </button>
+            <button
+              class="btn primary"
+              @click="activeButton = false"
+              v-else-if="activeButton"
+            >
+              Закончить
+            </button>
+            <button class="btn" @click="reset" v-if="!activeButton">
+              начать заново
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <script src="https://unpkg.com/vue@next"></script>
-  <script src="vue.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="vue.js"></script>
   </body>
 </html>
