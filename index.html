@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="#" />
   </head>
   <body>
-    <div class="container" id="app">
+    <div class="container" id="app" v-cloak>
       <div class="card">
         <h1>План по изучению Vue.js</h1>
 
@@ -30,8 +30,10 @@
           <li class="steps-item"><span>4</span> Шаг 4</li> -->
           </ul>
           <div>
-            <button class="btn">Назад</button>
-            <button class="btn primary">Вперед</button>
+            <button class="btn" @click="prev" :disabled="!activeIndex">
+              Назад
+            </button>
+            <button class="btn primary" @click="nextOfFinish">Вперед</button>
           </div>
         </div>
       </div>

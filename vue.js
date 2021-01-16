@@ -39,17 +39,23 @@ const App = {
   methods: {
     prev() {
       // когда нажимаем кнопку назад
+      if (this.activeIndex > 0) {
+        this.mainText = this.steps[(this.activeIndex -= 1)].text;
+      }
     },
     reset() {
       // начать заново
     },
     nextOfFinish() {
       // кнопка вперед или закончить
+      if (this.activeIndex < this.steps.length - 1) {
+        this.mainText = this.steps[(this.activeIndex += 1)].text;
+      }
     },
     setActive(idx) {
       // когда нажимаем на определенный шаг
-      console.log(idx);
       this.mainText = this.steps[idx].text;
+      this.activeIndex = idx;
     },
   },
   computed: {
