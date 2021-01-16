@@ -34,6 +34,7 @@ const App = {
         },
       ],
       mainText: "",
+      activeButton: true,
     };
   },
   methods: {
@@ -45,6 +46,8 @@ const App = {
     },
     reset() {
       // начать заново
+      this.setActive(0);
+      this.activeButton = true;
     },
     nextOfFinish() {
       // кнопка вперед или закончить
@@ -62,6 +65,9 @@ const App = {
     // тут стоит определить несколько свойств:
     // 1. текущий выбранный шаг
     // 2. выключена ли кнопка назад
+    buttonOff() {
+      return this.activeIndex;
+    },
     // 3. находимся ли мы на последнем шаге
   },
 };

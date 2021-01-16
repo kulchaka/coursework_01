@@ -31,10 +31,31 @@
           <li class="steps-item"><span>4</span> Шаг 4</li> -->
           </ul>
           <div>
-            <button class="btn" @click="prev" :disabled="!activeIndex">
+            <button
+              class="btn"
+              @click="prev"
+              :disabled="!buttonOff"
+              v-if="activeButton"
+            >
               Назад
             </button>
-            <button class="btn primary" @click="nextOfFinish">Вперед</button>
+            <button
+              class="btn primary"
+              @click="nextOfFinish"
+              v-if="activeIndex < steps.length - 1 && activeButton"
+            >
+              Вперед
+            </button>
+            <button
+              class="btn primary"
+              @click="activeButton = false"
+              v-else-if="activeButton"
+            >
+              Закончить
+            </button>
+            <button class="btn" @click="reset" v-if="!activeButton">
+              начать заново
+            </button>
           </div>
         </div>
       </div>
