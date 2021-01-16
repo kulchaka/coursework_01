@@ -18,10 +18,10 @@
           </div>
           <ul class="steps-list">
             <li
-              class="steps-item done"
+              class="steps-item"
               v-for="(item, index) in steps"
               :key="index"
-              :class="{ active: index ===  activeIndex }"
+              :class="{ active: index ===  activeIndex, done:  index < activeIndex }"
             >
               <span @click="setActive(index)">{{ index + 1 }}</span> {{
               item.title }}
