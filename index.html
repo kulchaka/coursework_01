@@ -3,19 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Основы Vue</title>
+    <title>Basic Vue 01</title>
     <link rel="stylesheet" href="theme.css" />
     <link rel="shortcut icon" href="#" />
   </head>
   <body>
     <div class="container" id="app" v-cloak>
       <div class="card">
-        <h1>План по изучению Vue.js</h1>
+        <h1>A plan for learning the Vue.js</h1>
 
         <div class="steps">
-          <div class="steps-content">
-            {{ mainText ? mainText : steps[0].text }}
-          </div>
+          <div class="steps-content">{{ activeStep.text }}</div>
           <ul class="steps-list">
             <li
               class="steps-item"
@@ -26,9 +24,6 @@
               <span @click="setActive(index)">{{ index + 1 }}</span> {{
               item.title }}
             </li>
-            <!-- <li class="steps-item done"><span>2</span> Шаг 2</li>
-          <li class="steps-item active"><span>3</span> Шаг 3</li>
-          <li class="steps-item"><span>4</span> Шаг 4</li> -->
           </ul>
           <div>
             <button
@@ -37,24 +32,24 @@
               :disabled="!buttonOff"
               v-if="activeButton"
             >
-              Назад
+              previous
             </button>
             <button
               class="btn primary"
               @click="nextOfFinish"
               v-if="lastStep && activeButton"
             >
-              Вперед
+              next
             </button>
             <button
               class="btn primary"
               @click="activeButton = false"
               v-else-if="activeButton"
             >
-              Закончить
+              end
             </button>
             <button class="btn" @click="reset" v-if="!activeButton">
-              начать заново
+              reset
             </button>
           </div>
         </div>
