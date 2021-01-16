@@ -4,7 +4,7 @@
 
 You can also see an example by following the link below:
 
-#### https://kulchaka.github.io/coursework_01
+#### https://kulchaka.github.io/coursework_01/
 
 - this project uses: HTML,CSS,GIT and Vue JS 3
 
