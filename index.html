@@ -42,7 +42,7 @@
             <button
               class="btn primary"
               @click="nextOfFinish"
-              v-if="activeIndex < steps.length - 1 && activeButton"
+              v-if="lastStep && activeButton"
             >
               Вперед
             </button>

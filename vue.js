@@ -69,6 +69,11 @@ const App = {
       return this.activeIndex;
     },
     // 3. находимся ли мы на последнем шаге
+    lastStep() {
+      if (this.activeIndex < this.steps.length - 1) {
+        return true;
+      }
+    },
   },
 };
 
