@@ -46,8 +46,8 @@ const App = {
     },
     reset() {
       // начать заново
-      this.setActive(0);
       this.activeButton = true;
+      this.setActive(0);
     },
     nextOfFinish() {
       // кнопка вперед или закончить
@@ -57,7 +57,9 @@ const App = {
     },
     setActive(idx) {
       // когда нажимаем на определенный шаг
-      this.activeIndex = idx;
+      if (this.activeButton) {
+        this.activeIndex = idx;
+      }
     },
   },
   computed: {
